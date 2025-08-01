@@ -4,7 +4,7 @@ import { ReactComponent as CrwnLogo} from "../../assets/crown.svg"
 
 import './navigation.styles.scss'
 
-function Navigation () {
+function Navigation() {
   return (
     <>
       <div className='navigation'>
@@ -15,7 +15,7 @@ function Navigation () {
           <Link className='nav-link' to='/shop'>
             SHOP
           </Link>
-          <Link className='nav-link' to='/sign-in'>
+          <Link className='nav-link' to='/authentication'>
             SIGN IN
           </Link>
         </div>
