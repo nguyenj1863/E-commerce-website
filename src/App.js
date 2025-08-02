@@ -4,6 +4,7 @@ import Navigation from './routes/navigation/navigation.component';
 import Authentication from './routes/authentication/authentication';
 import Shop from './routes/shop/shop.component';
 
+
 function App() {
   return (
     <Routes>
