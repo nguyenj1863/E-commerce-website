@@ -15,22 +15,21 @@ const defaultFormFields = {
   password: '',
 };
 
-function SignInForm() {
-
+const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
-  
+
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
-  
+
   const signInWithGoogle = async () => {
     await signInWithGooglePopup();
   };
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     try {
       await signInAuthUserWithEmailAndPassword(email, password);
       resetFormFields();
@@ -38,13 +37,13 @@ function SignInForm() {
       console.log('user sign in failed', error);
     }
   };
-  
+
   const handleChange = (event) => {
     const { name, value } = event.target;
-  
+
     setFormFields({ ...formFields, [name]: value });
   };
-  
+
   return (
     <SignInContainer>
       <h2>Already have an account?</h2>
@@ -58,7 +57,7 @@ function SignInForm() {
           name='email'
           value={email}
         />
-  
+
         <FormInput
           label='Password'
           type='password'
@@ -80,6 +79,6 @@ function SignInForm() {
       </form>
     </SignInContainer>
   );
-}
+};
 
 export default SignInForm;
