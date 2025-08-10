@@ -34,7 +34,7 @@ function removeCartItem(cartItems, cartItemToRemove) {
 };
 
 function clearCartItem(cartItems, cartItemToClear) {
-  cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id);
+  return cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id);
 }
 
 export function setIsCartOpen(bool) {
