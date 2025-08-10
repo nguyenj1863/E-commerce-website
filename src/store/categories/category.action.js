@@ -1,6 +1,28 @@
-import { createAction } from '../../utils/reducer/reducer.utils';
 import { CATEGORIES_ACTION_TYPES } from './category.types';
+import { createAction } from '../../utils/reducer/reducer.utils';
 
-export function setCategories(categoriesArray) {
-    return createAction(CATEGORIES_ACTION_TYPES.SET_CATEGORIES, categoriesArray);
+import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.utils';
+
+export function fetchCategoriesStart() {
+    return createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START,);
 }
+
+export function fetchCategoriesSuccess(categoriesArray) {
+    return createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS, categoriesArray);
+}
+
+export function fetchCategoriesFail(error) {
+    return createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_FAIL, error);
+}
+
+export const fetchCategoriesAsync = () => {
+    return async (dispatch) => {
+        dispatch(fetchCategoriesStart());
+        try {
+            const categoriesArray = await getCategoriesAndDocuments('categories');
+            dispatch(fetchCategoriesSuccess(categoriesArray));
+        } catch (error) {
+            dispatch(fetchCategoriesFail);
+        }
+    };
+};
